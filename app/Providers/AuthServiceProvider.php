@@ -28,7 +28,7 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         Passport::routes();
         /*
-        To change token life-time. Uncomment this line for testing purposes.
+        // To change token life-time. Uncomment this line for testing purposes.
 
         Passport::personalAccessTokensExpireIn(Carbon::now()->addSeconds(30));
         Passport::refreshTokensExpireIn(Carbon::now()->addDays(30));

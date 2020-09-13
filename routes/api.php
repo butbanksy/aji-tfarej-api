@@ -25,5 +25,6 @@ Route::group(['middleware'=>'auth:api'], function(){
     Route::get('/movies', 'Api\MovieController@index');
     Route::post('/logout', 'Api\AuthController@logout');
     Route::post('/photo', 'Api\UserController@uploadPhoto');
+    Route::post('/token', 'Api\AuthController@verifyLogin');
 });
 

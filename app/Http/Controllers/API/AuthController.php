@@ -45,5 +45,10 @@ class AuthController extends Controller
         $request->user()->token()->revoke();
     }
 
+    public function verifyLogin(Request $request)
+    {
+        return response(auth()->user(), 200);
+    }
+
 
 }
