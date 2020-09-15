@@ -14,11 +14,16 @@ class AuthController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:55',
             'email' => 'email|required|unique:users',
-            'password' => 'required'
+            'password' => 'required',
+            'image'=>'required|mimes:jpeg,jpg,png|max:2000'
+
         ]);
 
         $validatedData['password'] = bcrypt($request->password);
+        $imagePath = Storage::put('public', $request->image);
         $user = User::create($validatedData);
+        $user->image = Storage::url($imagePath);
+        $user->save();
         $accessToken = $user->createToken('authToken')->accessToken;
 
         return response(['user' => $user, 'access_token' => $accessToken]);
